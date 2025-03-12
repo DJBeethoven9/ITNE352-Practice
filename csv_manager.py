@@ -106,22 +106,22 @@ def main():
     
     while True:
         display_menu()
-        choice = input("Enter a Number: ")
+        number_key = input("Enter a Number: ")
         
-        if choice == '1':
+        if number_key == '1':
             emp_id = input("Enter Employee ID: ")
             search_by_id(data, emp_id)
-        elif choice == '2':
+        elif number_key == '2':
             show_total_records(data)
-        elif choice == '3':
+        elif number_key == '3':
             display_all_records(data)
-        elif choice == '4':
+        elif number_key == '4':
             add_record(file, data)
-        elif choice == '0':
+        elif number_key == '0':
             print("Goodbye!")
             break
         else:
-            print("Invalid choice. Please try again.")
+            print("Invalid number_key. Please try again.")
             
 
 #calling the main function

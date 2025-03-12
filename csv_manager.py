@@ -39,7 +39,7 @@ def search_by_id(data, emp_id):
 #showing the total records
 def show_total_records(data):
     print("")
-    print(f">>Total number of records: {len(data)}<<")
+    print(f">> Total number of records: {len(data)} <<")
 
 #displaying all the records
 def display_all_records(data):

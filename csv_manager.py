@@ -32,7 +32,7 @@ def search_by_id(data, emp_id):
     for row in data:
         if row['ID'] == emp_id:
             print("")
-            print(f"Employee Name: {row['Employee Name']}, Gender: {row['Gender']} , Position: {row['Position Title']}, Experience: {row['Experience']} Years, Performace in 2025: {row['Performance in 2025']}%")
+            print(f"Employee Name: {row['Employee Name']}, Position: {row['Position Title']}, Experience: {row['Experience']} Years")
             return
     print("Employee not found.")
 
@@ -88,13 +88,13 @@ def add_record(filename, data):
 #checking the Performance in 2025 input and validating it
     while True:
         try:
-            performance = int(input("Enter Performance in 2025: "))
-            if performance < 0:
-                raise ValueError("Performance cannot be negative.")
+            performance = int(input("Enter Performance in 2025 (0-100): "))
+            if performance < 0 or performance > 100:
+                raise ValueError("Performance must be between 0 and 100.")
             new_record['Performance in 2025'] = performance
             break
         except ValueError as e:
-            print(f"Invalid input: {e}. Please enter a non-negative integer.")
+            print(f"Invalid input. Please enter a number between 0 and 100.")
     data.append(new_record)
     save_data(filename, data)
     print("Record added successfully.")
@@ -106,10 +106,10 @@ def main():
     
     while True:
         display_menu()
-        choice = input("Enter your choice: ")
+        choice = input("Enter a Number: ")
         
         if choice == '1':
-            emp_id = input("Enter employee ID: ")
+            emp_id = input("Enter Employee ID: ")
             search_by_id(data, emp_id)
         elif choice == '2':
             show_total_records(data)
@@ -122,6 +122,7 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+            
 
 #calling the main function
 if __name__ == "__main__":

@@ -2,15 +2,15 @@
 import csv
 
 #loading the data from the csv file
-def load_data(filename):
-    with open(filename, 'r') as employee_file:
+def load_data(file):
+    with open(file, 'r') as employee_file:
         reader = csv.DictReader(employee_file)
         data = [row for row in reader]
     return data
 
 #saving the data to the csv file
-def save_data(filename, data):
-    with open(filename, 'a', newline='') as employee_file:
+def save_data(file, data):
+    with open(file, 'a', newline='') as employee_file:
         fieldnames = data[0].keys()
         writer = csv.DictWriter(employee_file, fieldnames=fieldnames)
         if employee_file.tell() == 0:
@@ -47,7 +47,7 @@ def display_all_records(data):
         print(f"{row['Employee Name']} ({row['Gender']}): {row['Position Title']} ({row['Performance in 2025']}%)")
 
 #adding a new record to the csv file
-def add_record(filename, data):
+def add_record(file, data):
     while True:
         new_id = input("Enter ID: ")
         if any(row['ID'] == new_id for row in data):
@@ -96,13 +96,13 @@ def add_record(filename, data):
         except ValueError as e:
             print(f"Invalid input. Please enter a number between 0 and 100.")
     data.append(new_record)
-    save_data(filename, data)
+    save_data(file, data)
     print("Record added successfully.")
 
-#main function and calling the functions
+#defining the main function & if there is no need to call the function, it will not be called 
 def main():
-    filename = 'Employee_data.csv'
-    data = load_data(filename)
+    file = 'Employee_data.csv'
+    data = load_data(file)
     
     while True:
         display_menu()
@@ -116,7 +116,7 @@ def main():
         elif choice == '3':
             display_all_records(data)
         elif choice == '4':
-            add_record(filename, data)
+            add_record(file, data)
         elif choice == '0':
             print("Goodbye!")
             break

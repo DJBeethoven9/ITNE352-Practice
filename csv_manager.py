@@ -121,7 +121,7 @@ def main():
             print("Goodbye!")
             break
         else:
-            print("Invalid number_key. Please try again.")
+            print("Invalid input. Please try again.")
             
 
 #calling the main function

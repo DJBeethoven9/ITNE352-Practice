@@ -62,13 +62,13 @@ def add_record(file, data):
 #checking the Gender input and validating it
     while True:
         gender = input("Enter Gender: ").lower()
-        if gender in ['male', 'm']:
+        if gender in ['male', 'm']: #it will convert the input to lowercase
             new_record['Gender'] = 'Male'
             break
-        elif gender in ['female', 'f']:
+        elif gender in ['female', 'f']: #it will convert the input to lowercase
             new_record['Gender'] = 'Female'
             break
-        else:
+        else: #if the input is not valid, it will print the message
             print("Invalid gender input. Please enter 'male', 'm', 'female', or 'f'.")
 
 #checking the Position Title input and validating it
